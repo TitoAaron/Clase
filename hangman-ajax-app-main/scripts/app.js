@@ -16,44 +16,51 @@ fetch('https://raw.githubusercontent.com/hjorturlarsen/IMDB-top-100/master/data/
 window.onload = async function(){
     let response =  await fetch("https://raw.githubusercontent.com/hjorturlarsen/IMDB-top-100/master/data/movies.json");
     let data = await response.json();
-    let random = Math.floor(Math.random()* data.length)
-    let Palabra = data[random].title;
-    let Pelicula = Palabra.replaceAll(/[a-zA-Z]/g,"*");
-
-    let palabras = "";
-        
-    let arrPalabra = Palabra.split("");
-    let arrPelicula = Pelicula.split("");
-    console.log(arrPalabra);
-    $("#puzzle").text(Pelicula);
-
-    $("#prueba").keyup(function(e){
-        let letra = e.key;
-        palabras += e.key;
-        for(var i = 0; i < arrPalabra.length; i++){
-            if(arrPalabra[i] == letra){
-                arrPelicula[i] = letra;
-            }
-        }
-        $("#puzzle").text(arrPelicula.join(" "));
-    });   
-
-    /*console.log(arrPalabra);
-    console.log(arrPelicula);*/
+    let Pelicula = data[Math.floor(Math.random()* data.length)].title;
     
+
+
+    /*----------------------------------------------------*/
+
+
+    let PeliculaAsterisco = Pelicula.replaceAll(/[a-zA-Z]/g,"*");
+    let palabras = [];
+    let arrPelicula = Pelicula.split("");
+    let arrPeliculaAsterisco = PeliculaAsterisco.split("");
     console.log(arrPelicula);
 
-    //console.log(Pelicula.charAt(4)  + " -----" + Palabra.length);
+    /*----------------------------------------------------*/
     
-    /*
-    for (var i = 0; i< Palabra.length; i++){
-        console.log(Palabra.charAt(i))
-        var letra = Palabra.charAt(i);
-        if(letra == a){
-            Pelicula.charAt(i) = "a";
+    $("#puzzle").text(PeliculaAsterisco);
+    
+
+    document.addEventListener("keyup", function(e){
+        let letra = e.key;
+        for(var i = 0; i < arrPelicula.length; i++){
+            if(arrPelicula[i] == letra){
+                arrPeliculaAsterisco[i] = letra;
+                
+            }
         }
-    }
+        palabras.push(letra);
+        
+        $("#letters-tried").text(palabras.join(" "));
+        $("#puzzle").text(arrPeliculaAsterisco.join(" "));
+    });  
+
+    $("#reset").click(function(){
+        Pelicula = data[Math.floor(Math.random()* data.length)].title;
+        PeliculaAsterisco = Pelicula.replaceAll(/[a-zA-Z]/g,"*");
+        palabras = [];
+        arrPelicula = Pelicula.split("");
+        arrPeliculaAsterisco = PeliculaAsterisco.split("");
+        console.log(arrPelicula);
+        $("#puzzle").text(PeliculaAsterisco);
+    })
+
     console.log(Pelicula);
-    */
+
+    
+
 
 }
