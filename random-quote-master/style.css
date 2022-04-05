@@ -1,0 +1,27 @@
+/* Mis estilos */
+body {
+  background: #b09e99;
+  width: 100vw;
+  height: 100vh;
+}
+
+.quote--button button {
+  background-color: #64b6ac;
+  color: white;
+}
+
+.quote--button button:hover {
+  background-color: #b09e99;
+}
+
+.quote--text {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.quote--author {
+  color: #64b6ac;
+}
+
+.quote {
+  background-color: rgba(255, 255, 255, 0.502);
+}
