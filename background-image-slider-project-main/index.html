@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- main css -->
+    <link rel="stylesheet" href="css/main.css">
+
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="css/all.css">
+    <title>Background Image Project</title>
+    <style>
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <div class="container">
+            <div class="row max-height align-items-center">
+                <div :style='{"background": "url(" + getUrl() + ")"}'
+                    class="col-9 col-md-10 mx-auto img-container">
+                    <a @click="prevImg" class="btn btn-left"><i class="fas fa-caret-left"></i></a>
+                    <a @click="nextImg" class="btn btn-right"><i class="fas fa-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script src="js/app_vue.js"></script>
+
+</body>
+
+</html>
