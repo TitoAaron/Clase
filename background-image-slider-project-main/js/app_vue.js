@@ -17,17 +17,22 @@ Vue.createApp({
             return this.urlImage = 'img/' + pictures[this.Index] + '.jpeg';
         },
         nextImg(){
+            
             if(this.Index < pictures.length - 1){
+
                 this.Index++;
             }else{
+
                 this.Index = 0;
             }
         },
         prevImg(){
-            if(this.Index > pictures.length -1){
+            if(this.Index > 0){
+
                 this.Index--;
-            }else{
-                this.Index = pictures.length;
+
+            }else {
+                this.Index = pictures.length -1;
             }
 
         }
