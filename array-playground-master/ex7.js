@@ -5905,8 +5905,6 @@ console.log(champions.sort(function(a , b) {
     if (a.stats.hp < b.stats.hp) {
         return 1;
     }
-
-
     // Solo queda el caso que tengan la misma vida inicial. Para decir que 'dos elementos son iguales' al algoritmo sort, debemos devolver un 0.
     return 0;
 })); // TODO: ordenar por vida inicial
