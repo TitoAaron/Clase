@@ -3,25 +3,48 @@
 // Importamos el JSON. Vue ya lo convierte en un array de objetos y lo poe en la variable pokedex 
 import pokedex from './assets/pokedex.json';
 import Card from './components/Card.vue';
+import RadialProgress from "vue3-radial-progress";
+
 
 import BackCard from './assets/back-card.png';
+import ChessBoard from './components/ChessBoard.vue';
+import { reactive } from '@vue/reactivity';
 let arrayPokedex = pokedex.slice(0,10);
 
+arrayPokedex = arrayPokedex.map((x) => {
+  
+  return {id: x.id,
+   name: x.name.english,
+   ruta: '/pokemons/' + x.id.toString().padStart(3,"0") + ".png"}
 
-console.log(arrayPokedex);
+})
+
+function checkedCards(isMatch){
+  if (isMatch) {
+    state.score++;
+  }
+}
+
+const state = reactive({
+  score: 0,
+  totalMatches: 10
+})
 </script>
-
-
 
 <template>
   <header>
     <h1>¡PokeMemory</h1>
   </header>
 
+    <RadialProgress 
+   :diameter="100"
+   :completed-steps="state.score"
+   :total-steps="state.totalMatches">
+    <p>{{state.score + "/" + state.totalMatches}}</p>
+  </RadialProgress>
+
   <main>
-    <Card :back="BackCard" front="/pokemons/777.png" :reveal="true">
-    </Card>
-    <Card :back="BackCard" front="/pokemons/666.png" :reveal="false"></Card>
+    <ChessBoard @match="checkedCards" :cards="arrayPokedex" :backCardImg="BackCard"></ChessBoard>
   </main>
 </template>
 
@@ -53,6 +76,7 @@ a,
 @media (min-width: 1024px) {
   body {
     display: flex;
+    justify-content: center;
   }
 
   header {

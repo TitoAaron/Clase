@@ -1,24 +1,20 @@
 <!-- Card Component -->
 <script setup>
 
-
 const props = defineProps({
     back: String,
     front: String,
     reveal: Boolean,
 })
 
+const emits = defineEmits({
 
-function cambiar(){
-    reveal = !reveal;
-}
+})
+
 
 </script>
 
-
-
 <template>
-    <img  v-if="!reveal" :src="front" alt="">  
-
-    <img  v-else :src="back" alt="">
+    <img  v-if="reveal" :src="front" >  
+    <img  v-else :src="back" >
 </template>
